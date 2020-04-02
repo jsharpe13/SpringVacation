@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert new Vacation</title>
+</head>
+<body>
+<form th:object="${newVacation}" th:action="@{/update/{id}(id=${newVacation.id})}" method=POST>
+Vacation Name: <input name="VacationName" size="20" th:field="*{VacationName}"><br/>
+Price: <input name="price" size="20" th:field="*{price}"><br />
+State: <input name="place.state" size="20" th:field="*{place.state}"><br />
+Company Name: <input name="company.companyName" size="20" th:field="*{company.companyName}"><br />
+Vacation Agent: <input name="company.vacationAgent" size="20" th:field="*{company.vacationAgent}"><br />
+city: <input name="place.city" size="20" th:field="*{place.city}"><br />
+<input name="submit"type="submit"value="submit"/>
+</form>
+<a href="viewAll">View all Vacations</a>
+</body>
+</html>

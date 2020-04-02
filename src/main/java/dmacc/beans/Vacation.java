@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 public class Vacation 
 {
@@ -12,29 +14,29 @@ public class Vacation
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String VacationName;
-	private String state;
 	private double price;
+	@Autowired
+	private place Place;
+	@Autowired
+	private company Company;
 	
 	public Vacation()
 	{
 		super();
-		this.state="IA";
 	}
 	public Vacation(String VacationName)
 	{
 		this.VacationName = VacationName;
 	}
-	public Vacation(String VacationName, String state, double price)
+	public Vacation(String VacationName, double price)
 	{
 		this.VacationName = VacationName;
-		this.state = state;
 		this.price = price;
 	}
 	public Vacation(int id, String VacationName, String state, double price)
 	{
 		this.id = id;
 		this.VacationName = VacationName;
-		this.state = state;
 		this.price = price;
 	}
 	public long getId() {
@@ -49,21 +51,30 @@ public class Vacation
 	public void setVacationName(String vacationName) {
 		VacationName = vacationName;
 	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
 	public double getPrice() {
 		return price;
 	}
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public place getPlace() {
+		return Place;
+	}
+	public void setPlace(place place) {
+		Place = place;
+	}
+	public company getCompany() {
+		return Company;
+	}
+	public void setCompany(company company) {
+		Company = company;
+	}
 	@Override
 	public String toString() {
-		return "Vacation [id=" + id + ", VacationName=" + VacationName + ", state=" + state + ", price=" + price + "]";
+		return "Vacation [id=" + id + ", VacationName=" + VacationName + ", price=" + price + ", Place=" + Place
+				+ ", Company=" + Company + "]";
 	}
+	
+	
 	
 }
